@@ -5,19 +5,19 @@
 frontear::Number::Number(std::string number) : value(std::move(number)) {}
 
 frontear::Number frontear::Number::operator+(const frontear::Number &other) const {
-    return *this;
+    return Number("0");
 }
 
 frontear::Number frontear::Number::operator-(const frontear::Number &other) const {
-    return *this;
+    return Number("0");
 }
 
 frontear::Number frontear::Number::operator*(const frontear::Number &other) const {
-    return *this;
+    return Number("0");
 }
 
 frontear::Number frontear::Number::operator/(const frontear::Number &other) const {
-    return *this;
+    return Number("0");
 }
 
 std::ostream &frontear::operator<<(std::ostream &os, const frontear::Number &number) {

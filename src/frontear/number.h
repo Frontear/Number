@@ -11,10 +11,10 @@ namespace frontear {
     public:
         explicit Number(std::string number);
 
-        Number operator+(const Number& other) const;
-        Number operator-(const Number& other) const;
-        Number operator*(const Number& other) const;
-        Number operator/(const Number& other) const;
+        Number operator+(const Number &other) const;
+        Number operator-(const Number &other) const;
+        Number operator*(const Number &other) const;
+        Number operator/(const Number &other) const;
 
         friend std::ostream &operator<<(std::ostream &os, const Number &number);
     };

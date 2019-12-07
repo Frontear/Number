@@ -8,7 +8,11 @@ int main() {
     Number x("40");
     Number y("30");
 
-    cout << x + y << "\n" << x - y << "\n" << x * y << "\n" << x / y << "\n";
+    cout << x << " + " << y << " = " << x + y << endl;
+    cout << x << " - " << y << " = " << x - y << endl;
+    cout << x << " * " << y << " = " << x * y << endl;
+    cout << x << " / " << y << " = " << x / y << endl;
+
     cout << endl;
 
     return 0;
