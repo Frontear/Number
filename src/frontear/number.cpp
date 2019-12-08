@@ -45,7 +45,9 @@ OPERATION(add) {
 
     *res = carry + '0';
 
-    return frontear::Number(result.erase(0, std::min(result.find_first_not_of('0'), result.length() - 1))); // remove trailing 0s
+    return frontear::Number(result.erase(0,
+                                         std::min(result.find_first_not_of('0'),
+                                                  result.length() - 1))); // remove trailing 0s
 }
 
 OPERATOR(+, add)
@@ -76,13 +78,32 @@ OPERATION(sub) {
         *res = (first - second) + '0';
     }
 
-    return frontear::Number(result.erase(0, std::min(result.find_first_not_of('0'), result.length() - 1))); // remove trailing 0s
+    return frontear::Number(result.erase(0,
+                                         std::min(result.find_first_not_of('0'),
+                                                  result.length() - 1))); // remove trailing 0s
 }
 
 OPERATOR(-, sub)
 
+/*
+ * Main issues: todo
+ *  - Very very inefficient
+ *  - Can't handle decimals
+ *  - Can't handle negative values
+ */
 frontear::Number frontear::Number::operator*(const frontear::Number &other) const {
-    return frontear::Number("0");
+    auto x = *this, y = other;
+
+    while (true) {
+        y = (y - frontear::Number("1"));
+        if (y.value == "0") {
+            break;
+        }
+
+        x = (x + *this);
+    }
+
+    return frontear::Number(x.value);
 }
 
 frontear::Number frontear::Number::operator/(const frontear::Number &other) const {
