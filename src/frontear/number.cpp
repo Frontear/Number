@@ -90,21 +90,33 @@ OPERATOR(-, sub)
  *  - Very very inefficient
  *  - Can't handle decimals
  *  - Can't handle negative values
+ *  - Can't handle digit differences
  */
-frontear::Number frontear::Number::operator*(const frontear::Number &other) const {
-    auto x = *this, y = other;
+OPERATION(mul) {
+    std::string result(len * 2, '0');
 
-    while (true) {
-        y = (y - frontear::Number("1"));
-        if (y.value == "0") {
-            break;
+    auto res = result.rbegin();
+    auto carry = 0u;
+    for (auto i = len - 1; i >= 0; --i, ++res) {
+        for (auto j = len - 1; j >= 0; --j) {
+            auto eval = (x[i] - '0') * (y[j] - '0') + carry;
+
+            carry = 0u;
+            while (eval >= 10) {
+                eval -= 10;
+                ++carry;
+            }
+
+            *res = eval + '0';
         }
-
-        x = (x + *this);
     }
 
-    return frontear::Number(x.value);
+    *res = carry + '0';
+
+    return frontear::Number(result.erase(0, result.find_first_not_of('0')) + std::string(len - 1, '0'));
 }
+
+OPERATOR(*, mul)
 
 frontear::Number frontear::Number::operator/(const frontear::Number &other) const {
     return frontear::Number("0");

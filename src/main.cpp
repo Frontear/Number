@@ -5,8 +5,8 @@ using frontear::Number;
 using std::cout, std::endl;
 
 int main() {
-    Number x("40");
-    Number y("30");
+    Number x("30");
+    Number y("40");
 
     cout << x << " + " << y << " = " << x + y << endl;
     cout << x << " - " << y << " = " << x - y << endl;
