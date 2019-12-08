@@ -43,6 +43,8 @@ OPERATION(add) {
         *res = eval + '0';
     }
 
+    *res = carry + '0';
+
     return frontear::Number(result.erase(0, std::min(result.find_first_not_of('0'), result.length() - 1))); // remove trailing 0s
 }
 
