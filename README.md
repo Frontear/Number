@@ -1,4 +1,4 @@
-# Number [![Run on Repl.it](https://repl.it/badge/github/Frontear/Number)](https://repl.it/github/Frontear/Number)
+# Number
 
 A simple C++ class that allows arithemetic manipulation of theoretically infinitely long number sequences. It makes use of `std::string` to store and manipulate the values.
 
